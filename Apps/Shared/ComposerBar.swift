@@ -58,7 +58,7 @@ struct ComposerBar: View {
                         Button(action: stop) {
                             Image(systemName: "stop.fill")
                                 .font(.system(size: 11, weight: .bold))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(OtohaChatTheme.canvas)
                                 .frame(width: OtohaChatTheme.sendSize, height: OtohaChatTheme.sendSize)
                                 .background(Color.primary, in: Circle())
                         }
@@ -70,7 +70,7 @@ struct ComposerBar: View {
                         Button(action: send) {
                             Image(systemName: "arrow.up")
                                 .font(.system(size: 13, weight: .bold))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(OtohaChatTheme.canvas)
                                 .frame(width: OtohaChatTheme.sendSize, height: OtohaChatTheme.sendSize)
                                 .background(canSend ? Color.primary : Color.primary.opacity(0.28), in: Circle())
                         }
@@ -82,7 +82,7 @@ struct ComposerBar: View {
                 }
             }
             .padding(14)
-            .background(OtohaChatTheme.canvas, in: RoundedRectangle(cornerRadius: OtohaChatTheme.composerRadius, style: .continuous))
+            .background(OtohaChatTheme.composerFill, in: RoundedRectangle(cornerRadius: OtohaChatTheme.composerRadius, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: OtohaChatTheme.composerRadius, style: .continuous)
                     .strokeBorder(OtohaChatTheme.composerStroke)

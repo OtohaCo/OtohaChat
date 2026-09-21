@@ -13,7 +13,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/OtohaCo/SwiftAgent.git",
-            exact: "1.0.0-rc.3"
+            branch: "main"
         ),
     ],
     targets: [

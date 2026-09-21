@@ -73,10 +73,10 @@ SwiftAgent 1.0.0-rc.3 中的 PCC 仍是实验能力。模型切换器里出现 P
 ## SDK 固定版本
 
 - 包：https://github.com/OtohaCo/SwiftAgent
-- 版本：`1.0.0-rc.3`
-- Revision：`d5383a26849f45d8a442c24aebfb0b7ca4798dd5`
+- 分支：`main`
+- Revision：`5de9e4fd4e69c2da809f78e6a69951b0a2067b4c`
 
-`Package.swift` 中为 `exact: "1.0.0-rc.3"`，并锁定在 `Package.resolved`。应用源码不内嵌 SDK，也不改 RC3。
+`Package.swift` 跟踪 `branch: "main"`，当前提交锁在 `Package.resolved`。应用源码不内嵌 SDK，也不改 SwiftAgent。
 
 ## 提供方
 

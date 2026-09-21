@@ -73,10 +73,10 @@ SwiftAgent 1.0.0-rc.3 の PCC は実験的です。モデル切替に PCC が出
 ## SDK のピン
 
 - パッケージ：https://github.com/OtohaCo/SwiftAgent
-- バージョン：`1.0.0-rc.3`
-- Revision：`d5383a26849f45d8a442c24aebfb0b7ca4798dd5`
+- ブランチ：`main`
+- Revision：`5de9e4fd4e69c2da809f78e6a69951b0a2067b4c`
 
-`Package.swift` は `exact: "1.0.0-rc.3"` で、`Package.resolved` にロックします。アプリ側は SDK をベンダーせず、RC3 も改変しません。
+`Package.swift` は `branch: "main"` を追跡し、現在のリビジョンを `Package.resolved` にロックします。アプリ側は SDK をベンダーせず、SwiftAgent も改変しません。
 
 ## プロバイダー
 
