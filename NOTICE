@@ -1,0 +1,35 @@
+OtohaChatApp
+============
+
+This application is an independent host for SwiftAgent. It does not vendor
+SwiftAgent sources. The SDK is consumed as a remote Swift package pinned to
+SwiftAgent 1.0.0-rc.3 (git revision d5383a26849f45d8a442c24aebfb0b7ca4798dd5).
+
+SwiftAgent
+----------
+https://github.com/OtohaCo/SwiftAgent
+MIT License
+Copyright (c) 2026 ChainBow Co., Ltd.
+
+Adapted example code
+--------------------
+The conversation controller, snapshot projection, fixture provider, and
+execution-report reducer in Sources/OtohaChatKit/Conversation are adapted from:
+
+  SwiftAgent/Examples/AppleChatApp
+  Files:
+    Sources/AppleChatIntegration/ConversationController.swift
+    Sources/AppleChatIntegration/ConversationDisplay.swift
+    Sources/AppleChatIntegration/FixtureConversation.swift
+
+  SwiftAgent/Examples/ExecutionReportingSupport
+  Files:
+    Sources/ExecutionReportingSupport/ExecutionReportReducer.swift
+
+The fixture path is test/preview/demo only. Ordinary user chat never falls
+back to the fixture. The execution report is presentation data only; restoring
+it cannot authorize a tool or mutate a Journal.
+
+OtohaChatApp is not affiliated with OpenAI, Anthropic, DeepSeek, or Apple
+Intelligence product brands. Provider names appear only as configuration
+labels for the corresponding APIs.

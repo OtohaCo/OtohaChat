@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A6BEBF8E74DD70A7F0C1202 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA4423952D7AA5BDA3EDBB /* AppSession.swift */; };
+		CEA15D874F790A55A4A542A2 /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73786F74803383EACDDE5CA /* ChatDetailView.swift */; };
+		FA2F7362D8793C57D096681D /* ComposerBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F9FE3DB70C782DB4D24490 /* ComposerBar.swift */; };
+		D88DC56486A41516B755C4E4 /* MarkdownMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C13A7128F6BD00EF8C7BC4 /* MarkdownMessage.swift */; };
+		4B91D0E2A8C3456F9E1B27A0 /* CopyableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C1A92B7D04F6A9C3E12F8 /* CopyableText.swift */; };
+		B7ABFB9630C58BA5EC0B22A3 /* OtohaChatTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F9BABA43820AA3765E7901 /* OtohaChatTheme.swift */; };
+		7D7A350CB3D9C5411D2BDFE6 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E52691E5E6C209DE162D0 /* RootView.swift */; };
+		9C0E50445D14E0EBD38695E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FCE01D405F00990CF80C1D /* SettingsView.swift */; };
+		9C16FAC90999B4EDABC9A3E3 /* OtohaChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367DAA191442DB600DE99EE /* OtohaChatApp.swift */; };
+		9009D555848094D8B7CFA757 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA4423952D7AA5BDA3EDBB /* AppSession.swift */; };
+		3025BCDD257C698B8433556D /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73786F74803383EACDDE5CA /* ChatDetailView.swift */; };
+		963650D612274B3B54146B2B /* ComposerBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F9FE3DB70C782DB4D24490 /* ComposerBar.swift */; };
+		AE524560A9B6D67E25395433 /* MarkdownMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C13A7128F6BD00EF8C7BC4 /* MarkdownMessage.swift */; };
+		71F3C8A94D2E4B11A6C05D9B /* CopyableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C1A92B7D04F6A9C3E12F8 /* CopyableText.swift */; };
+		0D4FF067281DE9F696494D15 /* OtohaChatTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F9BABA43820AA3765E7901 /* OtohaChatTheme.swift */; };
+		E3FAC0BEDBFC63E31EF38E42 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E52691E5E6C209DE162D0 /* RootView.swift */; };
+		EBF645F057B1A09C83D983F2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FCE01D405F00990CF80C1D /* SettingsView.swift */; };
+		0A7AE792BCB8EF070D38FF38 /* OtohaChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E286DD68F8F3B2508594D6 /* OtohaChatApp.swift */; };
+		B9FFABA6A980D7B1CB553C32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6549ED378A5DB1E5495EA1 /* Assets.xcassets */; };
+		6AE407342AD92CE16D336C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6549ED378A5DB1E5495EA1 /* Assets.xcassets */; };
+		2A4E13191E79675A63E3A92E /* OtohaChatKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9B9A82CCE840419EAE05C3AA /* OtohaChatKit */; };
+		66D8BD20C15AC9C62F82788B /* OtohaChatKit in Frameworks */ = {isa = PBXBuildFile; productRef = ECA84708BDF7F5799F3E5F5E /* OtohaChatKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3BFA4423952D7AA5BDA3EDBB /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
+		E73786F74803383EACDDE5CA /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
+		50F9FE3DB70C782DB4D24490 /* ComposerBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerBar.swift; sourceTree = "<group>"; };
+		78C13A7128F6BD00EF8C7BC4 /* MarkdownMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownMessage.swift; sourceTree = "<group>"; };
+		8E4C1A92B7D04F6A9C3E12F8 /* CopyableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableText.swift; sourceTree = "<group>"; };
+		B5F9BABA43820AA3765E7901 /* OtohaChatTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtohaChatTheme.swift; sourceTree = "<group>"; };
+		336E52691E5E6C209DE162D0 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		07FCE01D405F00990CF80C1D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A367DAA191442DB600DE99EE /* OtohaChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtohaChatApp.swift; sourceTree = "<group>"; };
+		01E286DD68F8F3B2508594D6 /* OtohaChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtohaChatApp.swift; sourceTree = "<group>"; };
+		D61885C1062FEBBD02E2C05B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CC51032EE16EB7947485EA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C117F53C4633436ADB7DEB6C /* OtohaChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OtohaChat.entitlements; sourceTree = "<group>"; };
+		A448A3FA6FC08318F2F1FFE1 /* OtohaChat-PCC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OtohaChat-PCC.entitlements"; sourceTree = "<group>"; };
+		E27831C19012BB89C537393C /* OtohaChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OtohaChat.entitlements; sourceTree = "<group>"; };
+		8DA09D268FCCAE152D4ADA25 /* OtohaChat-PCC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OtohaChat-PCC.entitlements"; sourceTree = "<group>"; };
+		50778595AA221B068518C8A3 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		66A185978B5CDC4F5A934BA1 /* PCC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = PCC.xcconfig; sourceTree = "<group>"; };
+		DF6549ED378A5DB1E5495EA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C756DDD51DBCA8634966F5C /* OtohaChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OtohaChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65966E548B2C1990AF5F0534 /* OtohaChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OtohaChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E9BAC7883EBD67B4D7BB04FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A4E13191E79675A63E3A92E /* OtohaChatKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		786E81C8D1B0D359E1357D0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66D8BD20C15AC9C62F82788B /* OtohaChatKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ADCF10F76EBF2A74473E9DC4 = {
+			isa = PBXGroup;
+			children = (
+				C76BD7790B6498EFE60256EA /* Apps */,
+				D35BDCF6803CCB1A9C4483A8 /* Config */,
+				00C45FD35CB0F9C5F764F070 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C76BD7790B6498EFE60256EA /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				7A6860A1A04070265E6C4DE6 /* Shared */,
+				6A7A0B8D0A9CBC441DBE60F1 /* macOS */,
+				AEC055979FBB39CE216AF3FC /* iOS */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		7A6860A1A04070265E6C4DE6 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				3BFA4423952D7AA5BDA3EDBB /* AppSession.swift */,
+				E73786F74803383EACDDE5CA /* ChatDetailView.swift */,
+				50F9FE3DB70C782DB4D24490 /* ComposerBar.swift */,
+				8E4C1A92B7D04F6A9C3E12F8 /* CopyableText.swift */,
+				78C13A7128F6BD00EF8C7BC4 /* MarkdownMessage.swift */,
+				B5F9BABA43820AA3765E7901 /* OtohaChatTheme.swift */,
+				336E52691E5E6C209DE162D0 /* RootView.swift */,
+				07FCE01D405F00990CF80C1D /* SettingsView.swift */,
+				DF6549ED378A5DB1E5495EA1 /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		6A7A0B8D0A9CBC441DBE60F1 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				A367DAA191442DB600DE99EE /* OtohaChatApp.swift */,
+				D61885C1062FEBBD02E2C05B /* Info.plist */,
+				C117F53C4633436ADB7DEB6C /* OtohaChat.entitlements */,
+				A448A3FA6FC08318F2F1FFE1 /* OtohaChat-PCC.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		AEC055979FBB39CE216AF3FC /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				01E286DD68F8F3B2508594D6 /* OtohaChatApp.swift */,
+				2CC51032EE16EB7947485EA1 /* Info.plist */,
+				E27831C19012BB89C537393C /* OtohaChat.entitlements */,
+				8DA09D268FCCAE152D4ADA25 /* OtohaChat-PCC.entitlements */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		D35BDCF6803CCB1A9C4483A8 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				50778595AA221B068518C8A3 /* Base.xcconfig */,
+				66A185978B5CDC4F5A934BA1 /* PCC.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		00C45FD35CB0F9C5F764F070 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C756DDD51DBCA8634966F5C /* OtohaChat.app */,
+				65966E548B2C1990AF5F0534 /* OtohaChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		23E6EB9256AB02C8FDCB22A5 /* OtohaChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E34F0A3097F43EE03997FAC8 /* Build configuration list for PBXNativeTarget "OtohaChat" */;
+			buildPhases = (
+				0B6C2843F7AFB3AC148BE443 /* Sources */,
+				E9BAC7883EBD67B4D7BB04FF /* Frameworks */,
+				718C1F61082559908D6C325A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OtohaChat;
+			packageProductDependencies = (
+				9B9A82CCE840419EAE05C3AA /* OtohaChatKit */,
+			);
+			productName = OtohaChat;
+			productReference = 5C756DDD51DBCA8634966F5C /* OtohaChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DAC66DDE62B7AF323A0B53C2 /* OtohaChat-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1438A30E23D29AD579A39A04 /* Build configuration list for PBXNativeTarget "OtohaChat-iOS" */;
+			buildPhases = (
+				A709F79C3932AF0D03148CEA /* Sources */,
+				786E81C8D1B0D359E1357D0E /* Frameworks */,
+				ACFCF16DF92198225B05F67F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OtohaChat-iOS";
+			packageProductDependencies = (
+				ECA84708BDF7F5799F3E5F5E /* OtohaChatKit */,
+			);
+			productName = OtohaChat;
+			productReference = 65966E548B2C1990AF5F0534 /* OtohaChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98F54143AB4E86B28C3AFEE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 6416127940A759DBB6E9780F /* Build configuration list for PBXProject "OtohaChat" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ADCF10F76EBF2A74473E9DC4;
+			packageReferences = (
+				92CB287E667FF508599464A3 /* XCLocalSwiftPackageReference "." */,
+			);
+			productRefGroup = 00C45FD35CB0F9C5F764F070 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				23E6EB9256AB02C8FDCB22A5 /* OtohaChat */,
+				DAC66DDE62B7AF323A0B53C2 /* OtohaChat-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		718C1F61082559908D6C325A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9FFABA6A980D7B1CB553C32 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACFCF16DF92198225B05F67F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AE407342AD92CE16D336C44 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B6C2843F7AFB3AC148BE443 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A6BEBF8E74DD70A7F0C1202 /* AppSession.swift in Sources */,
+				CEA15D874F790A55A4A542A2 /* ChatDetailView.swift in Sources */,
+				FA2F7362D8793C57D096681D /* ComposerBar.swift in Sources */,
+				4B91D0E2A8C3456F9E1B27A0 /* CopyableText.swift in Sources */,
+				D88DC56486A41516B755C4E4 /* MarkdownMessage.swift in Sources */,
+				B7ABFB9630C58BA5EC0B22A3 /* OtohaChatTheme.swift in Sources */,
+				7D7A350CB3D9C5411D2BDFE6 /* RootView.swift in Sources */,
+				9C0E50445D14E0EBD38695E0 /* SettingsView.swift in Sources */,
+				9C16FAC90999B4EDABC9A3E3 /* OtohaChatApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A709F79C3932AF0D03148CEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9009D555848094D8B7CFA757 /* AppSession.swift in Sources */,
+				3025BCDD257C698B8433556D /* ChatDetailView.swift in Sources */,
+				963650D612274B3B54146B2B /* ComposerBar.swift in Sources */,
+				71F3C8A94D2E4B11A6C05D9B /* CopyableText.swift in Sources */,
+				AE524560A9B6D67E25395433 /* MarkdownMessage.swift in Sources */,
+				0D4FF067281DE9F696494D15 /* OtohaChatTheme.swift in Sources */,
+				E3FAC0BEDBFC63E31EF38E42 /* RootView.swift in Sources */,
+				EBF645F057B1A09C83D983F2 /* SettingsView.swift in Sources */,
+				0A7AE792BCB8EF070D38FF38 /* OtohaChatApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D4172F6E5EBFE002CD5F7DE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50778595AA221B068518C8A3 /* Base.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C9CAF956A7C660E6865F2E2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50778595AA221B068518C8A3 /* Base.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		3A4EFCE5B1A1B1FDCE052CDB /* PCC */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66A185978B5CDC4F5A934BA1 /* PCC.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = PCC;
+		};
+		8B1294C8F4A2BB1622BBCBBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Apps/macOS/OtohaChat.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Apps/macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.otoha.OtohaChat;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		47879DF459D8B632A176C2EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Apps/macOS/OtohaChat-PCC.entitlements";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Apps/macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.otoha.OtohaChat;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = OTOHACHAT_PCC;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		02C0B11AD1FB4662BF3C754D /* PCC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Apps/macOS/OtohaChat-PCC.entitlements";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Apps/macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.otoha.OtohaChat;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG OTOHACHAT_PCC";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = PCC;
+		};
+		AC5605BBEA9139351072BD83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Apps/iOS/OtohaChat.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Apps/iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.otoha.OtohaChat;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		72590BBD33D229A6D9F6AABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Apps/iOS/OtohaChat-PCC.entitlements";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Apps/iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.otoha.OtohaChat;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = OTOHACHAT_PCC;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CCC13BAD2851FFE9218D0BF9 /* PCC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Apps/iOS/OtohaChat-PCC.entitlements";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Apps/iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.otoha.OtohaChat;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG OTOHACHAT_PCC";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = PCC;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6416127940A759DBB6E9780F /* Build configuration list for PBXProject "OtohaChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4172F6E5EBFE002CD5F7DE7 /* Debug */,
+				C9CAF956A7C660E6865F2E2E /* Release */,
+				3A4EFCE5B1A1B1FDCE052CDB /* PCC */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E34F0A3097F43EE03997FAC8 /* Build configuration list for PBXNativeTarget "OtohaChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B1294C8F4A2BB1622BBCBBF /* Debug */,
+				47879DF459D8B632A176C2EA /* Release */,
+				02C0B11AD1FB4662BF3C754D /* PCC */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1438A30E23D29AD579A39A04 /* Build configuration list for PBXNativeTarget "OtohaChat-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC5605BBEA9139351072BD83 /* Debug */,
+				72590BBD33D229A6D9F6AABA /* Release */,
+				CCC13BAD2851FFE9218D0BF9 /* PCC */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		92CB287E667FF508599464A3 /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9B9A82CCE840419EAE05C3AA /* OtohaChatKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92CB287E667FF508599464A3 /* XCLocalSwiftPackageReference "." */;
+			productName = OtohaChatKit;
+		};
+		ECA84708BDF7F5799F3E5F5E /* OtohaChatKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92CB287E667FF508599464A3 /* XCLocalSwiftPackageReference "." */;
+			productName = OtohaChatKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+}

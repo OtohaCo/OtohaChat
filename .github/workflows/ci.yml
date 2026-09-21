@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  mac:
+    name: macOS tests and builds
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show toolchain
+        run: |
+          swift --version
+          xcodebuild -version
+          df -h .
+      - name: Resolve and test
+        run: swift test --disable-sandbox --parallel
+      - name: Build macOS app
+        run: xcodebuild -project OtohaChat.xcodeproj -scheme OtohaChat -configuration Debug -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO build
+      - name: Build iOS Simulator
+        run: xcodebuild -project OtohaChat.xcodeproj -scheme OtohaChat-iOS -configuration Debug -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
+
+  lockfile:
+    name: dependency lock
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check SwiftAgent pin
+        run: |
+          test -f Package.resolved
+          grep -q 'd5383a26849f45d8a442c24aebfb0b7ca4798dd5' Package.resolved
+          grep -q '1.0.0-rc.3' Package.resolved

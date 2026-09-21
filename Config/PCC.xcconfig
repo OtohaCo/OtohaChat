@@ -1,0 +1,3 @@
+#include "Base.xcconfig"
+CODE_SIGN_ENTITLEMENTS = Apps/macOS/OtohaChat-PCC.entitlements
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) OTOHACHAT_PCC
