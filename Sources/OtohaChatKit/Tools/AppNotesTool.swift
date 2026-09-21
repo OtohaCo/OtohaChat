@@ -120,7 +120,7 @@ public struct AppNotesTool: AgentTool {
 
     public static let name = "app_notes"
     public static let description = "Search and read notes in OtohaChat's private notebook. Creating or updating a note requires host confirmation and a matching revision for updates."
-    public static let inputSchema = ToolSchema.object(
+    public static let inputSchema = HostToolSchema.object(
         properties: [
             "operation": .string,
             "id": .string,
@@ -129,8 +129,7 @@ public struct AppNotesTool: AgentTool {
             "body": .string,
             "expectedRevision": .string,
         ],
-        required: ["operation"],
-        additionalProperties: true
+        required: ["operation"]
     )
     public static let outputSchema = ToolSchema.object(
         properties: [

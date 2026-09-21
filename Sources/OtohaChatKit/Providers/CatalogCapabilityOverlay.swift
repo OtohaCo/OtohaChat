@@ -31,10 +31,9 @@ public enum CatalogCapabilityOverlay {
             copy.effortValues = ["none", "low", "medium", "high", "max"]
             copy.usedHostManifest = true
         case .anthropic:
-            copy.configurableReasoning = ModelCatalogSupport.supported.rawValue
-            copy.effortValues = ["low", "medium", "high", "max"]
-            copy.thinkingValues = ["adaptive", "enabled"]
-            copy.usedHostManifest = true
+            // Do not invent Opus 4.6 effort/adaptive for every Claude id.
+            // Sonnet 4.5 rejects those parameters with HTTP 400.
+            break
         case .applePCC, .appleOnDevice, .localResponses:
             break
         }

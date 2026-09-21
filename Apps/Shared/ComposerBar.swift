@@ -217,7 +217,7 @@ struct ComposerBar: View {
 
     private func handleSelection(profileID: UUID, modelName: String) {
         showingModelPicker = false
-        let reasoning = conversation.reasoning
+        let reasoning = reasoningForSelection(profileID: profileID, modelName: modelName)
         if store.shouldConfirmModelSwitch(
             conversationID: conversation.id,
             profileID: profileID,
@@ -236,6 +236,16 @@ struct ComposerBar: View {
             profileID: profileID,
             modelName: modelName,
             reasoning: reasoning
+        )
+    }
+
+    private func reasoningForSelection(profileID: UUID, modelName: String) -> ReasoningConfiguration {
+        guard let selected = store.settings.profiles.first(where: { $0.id == profileID }) else {
+            return conversation.reasoning
+        }
+        return conversation.reasoning.clamped(
+            to: selected.catalogModel(named: modelName),
+            kind: selected.kind
         )
     }
 
@@ -453,9 +463,8 @@ private struct ModelPickerPopover: View {
     }
 
     private func reasoningValues(_ model: CatalogModelChoice) -> [String] {
-        if let values = model.effortValues, !values.isEmpty { return values }
-        if let values = model.thinkingValues, !values.isEmpty { return values }
-        return ReasoningIntensity.allCases.map(\.label)
+        let kind = profile?.kind ?? .anthropic
+        return conversation.reasoning.pickerReasoningValues(for: model, kind: kind)
     }
 
     private func reasoningBinding(model: CatalogModelChoice, kind: ProviderKind) -> Binding<String> {

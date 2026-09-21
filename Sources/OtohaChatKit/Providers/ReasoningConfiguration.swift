@@ -100,34 +100,59 @@ public struct ReasoningConfiguration: Equatable, Sendable, Codable {
     }
 
     public func selectedReasoningValue(for model: CatalogModelChoice, kind: ProviderKind) -> String {
-        if let values = model.effortValues, !values.isEmpty {
-            let current: String
-            switch kind {
-            case .openaiResponses, .compatibleGateway:
-                current = effortWireValue(openaiEffort)
-            case .deepseekResponses:
-                current = effortWireValue(deepseekEffort)
-            case .anthropic:
-                current = anthropicEffort ?? effortWireValue(anthropicThinking)
-            case .applePCC, .appleOnDevice, .localResponses:
-                return values[0]
+        let options = pickerReasoningValues(for: model, kind: kind)
+        let current = currentReasoningWireValue(for: model, kind: kind)
+        if options.contains(current) { return current }
+        if kind == .anthropic { return "disabled" }
+        return options.first ?? intensity(for: kind).label
+    }
+
+    public func pickerReasoningValues(for model: CatalogModelChoice, kind: ProviderKind) -> [String] {
+        switch kind {
+        case .anthropic:
+            var values = ["disabled"]
+            if !model.anthropicEffortWireValues.isEmpty {
+                values.append(contentsOf: model.anthropicEffortWireValues)
+            } else if let thinking = model.thinkingValues {
+                values.append(contentsOf: thinking.filter { $0 != "disabled" })
             }
-            return values.contains(current) ? current : values[0]
+            return values
+        case .openaiResponses, .compatibleGateway, .deepseekResponses:
+            if let values = model.effortValues, !values.isEmpty { return values }
+            return ReasoningIntensity.allCases.map(\.label)
+        case .applePCC, .appleOnDevice, .localResponses:
+            return []
         }
-        if let values = model.thinkingValues, !values.isEmpty {
-            let current: String
-            switch anthropicThinking {
-            case .thinkingDisabled, .disabled, .serviceDefault: current = "disabled"
-            case .thinkingAdaptive: current = values.contains("adaptive") ? "adaptive" : values[0]
-            case .thinkingBudgetTokens: current = values.contains("enabled") ? "enabled" : values[0]
-            case .effort(let value): current = value
-            }
-            return values.contains(current) ? current : values[0]
+    }
+
+    public func clamped(to model: CatalogModelChoice?, kind: ProviderKind) -> ReasoningConfiguration {
+        guard kind == .anthropic else { return self }
+        let run = AnthropicRunParameters.resolve(
+            reasoning: self,
+            model: model,
+            maximumOutputTokens: maximumOutputTokens
+        )
+        var copy = self
+        switch run.thinking {
+        case .disabled:
+            copy.anthropicThinking = .thinkingDisabled
+            copy.anthropicEffort = nil
+        case .adaptive:
+            copy.anthropicThinking = .thinkingAdaptive
+            copy.anthropicEffort = run.effort?.rawValue
+        case .enabled(let tokens):
+            copy.anthropicThinking = .thinkingBudgetTokens(tokens)
+            copy.anthropicEffort = run.effort?.rawValue
         }
-        return intensity(for: kind).label
+        return copy
     }
 
     public mutating func applyCatalogReasoning(_ value: String, model: CatalogModelChoice, kind: ProviderKind) {
+        if kind == .anthropic, value == "disabled" || value == "none" || value == "off" {
+            anthropicThinking = .thinkingDisabled
+            anthropicEffort = nil
+            return
+        }
         if let values = model.effortValues, values.contains(value) {
             let choice: ReasoningChoice = (value == "none" || value == "off") ? .disabled : .effort(value)
             switch kind {
@@ -136,12 +161,15 @@ public struct ReasoningConfiguration: Equatable, Sendable, Codable {
             case .deepseekResponses:
                 deepseekEffort = choice
             case .anthropic:
-                anthropicEffort = value
-                if value == "none" || value == "off" || value == "disabled" {
+                if model.supportsAnthropicAdaptiveThinking {
+                    anthropicEffort = value
+                    anthropicThinking = .thinkingAdaptive
+                } else if model.supportsAnthropicEnabledThinking {
+                    anthropicEffort = nil
+                    anthropicThinking = .thinkingBudgetTokens(max(model.tokenBudgetMinimum ?? 1_024, 1_024))
+                } else {
                     anthropicThinking = .thinkingDisabled
                     anthropicEffort = nil
-                } else {
-                    anthropicThinking = .thinkingAdaptive
                 }
             case .applePCC, .appleOnDevice, .localResponses:
                 break
@@ -152,14 +180,42 @@ public struct ReasoningConfiguration: Equatable, Sendable, Codable {
             switch value {
             case "disabled", "none", "off":
                 anthropicThinking = .thinkingDisabled
+                anthropicEffort = nil
             case "adaptive":
                 anthropicThinking = .thinkingAdaptive
             case "enabled":
                 let budget = model.tokenBudgetMinimum ?? 1_024
                 anthropicThinking = .thinkingBudgetTokens(max(budget, 1_024))
+                if !model.supportsAnthropicAdaptiveThinking {
+                    anthropicEffort = nil
+                }
             default:
-                anthropicThinking = .thinkingAdaptive
+                anthropicThinking = model.supportsAnthropicAdaptiveThinking ? .thinkingAdaptive : .thinkingDisabled
             }
+        }
+    }
+
+    private func currentReasoningWireValue(for model: CatalogModelChoice, kind: ProviderKind) -> String {
+        switch kind {
+        case .openaiResponses, .compatibleGateway:
+            return effortWireValue(openaiEffort)
+        case .deepseekResponses:
+            return effortWireValue(deepseekEffort)
+        case .anthropic:
+            if anthropicThinking == .thinkingDisabled || anthropicThinking == .disabled {
+                return "disabled"
+            }
+            if let anthropicEffort, model.anthropicEffortWireValues.contains(anthropicEffort) {
+                return anthropicEffort
+            }
+            switch anthropicThinking {
+            case .thinkingAdaptive: return "adaptive"
+            case .thinkingBudgetTokens: return "enabled"
+            case .effort(let value): return value
+            case .thinkingDisabled, .disabled, .serviceDefault: return "disabled"
+            }
+        case .applePCC, .appleOnDevice, .localResponses:
+            return ""
         }
     }
 
@@ -215,7 +271,12 @@ public struct ReasoningConfiguration: Equatable, Sendable, Codable {
                 }
             }()
         case .anthropic:
-            anthropicThinking = intensity == .off ? .thinkingDisabled : .thinkingAdaptive
+            if intensity == .off {
+                anthropicThinking = .thinkingDisabled
+                anthropicEffort = nil
+            } else {
+                anthropicThinking = .thinkingAdaptive
+            }
         case .deepseekResponses:
             deepseekEffort = {
                 switch intensity {

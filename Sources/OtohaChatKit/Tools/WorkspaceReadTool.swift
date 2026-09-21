@@ -35,14 +35,13 @@ public struct WorkspaceReadTool: AgentTool {
     Installed skills live in .agents/skills. To see them, list that folder. Do not search the whole workspace for the word skills.
     Search matches path names first, then UTF-8 text, stays under optional path, and skips .git, node_modules, and build trees.
     """
-    public static let inputSchema = ToolSchema.object(
+    public static let inputSchema = HostToolSchema.object(
         properties: [
             "operation": .string,
             "path": .string,
             "query": .string,
         ],
-        required: ["operation"],
-        additionalProperties: true
+        required: ["operation"]
     )
     public static let outputSchema = ToolSchema.object(
         properties: [

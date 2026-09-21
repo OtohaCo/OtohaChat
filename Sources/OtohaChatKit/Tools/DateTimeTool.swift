@@ -31,15 +31,14 @@ public struct DateTimeTool: AgentTool {
 
     public static let name = "datetime"
     public static let description = "Read the current time in a named time zone, or add a day offset to an ISO-8601 date. Operations: now, add_days."
-    public static let inputSchema = ToolSchema.object(
+    public static let inputSchema = HostToolSchema.object(
         properties: [
             "operation": .string,
             "timezone": .string,
             "isoDate": .string,
             "days": .integer,
         ],
-        required: ["operation"],
-        additionalProperties: true
+        required: ["operation"]
     )
     public static let outputSchema = ToolSchema.object(
         properties: [

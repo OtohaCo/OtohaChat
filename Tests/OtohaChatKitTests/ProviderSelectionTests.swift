@@ -116,6 +116,46 @@ struct ProviderSelectionTests {
         #expect(reasoning.anthropicThinking == .thinkingAdaptive)
         reasoning.setIntensity(.off, for: .anthropic)
         #expect(reasoning.anthropicThinking == .thinkingDisabled)
+        #expect(reasoning.anthropicEffort == nil)
+    }
+
+    @Test func anthropicPickerKeepsDisabledInsteadOfSnappingToTheFirstEffort() {
+        var model = CatalogModelChoice(modelName: "claude-opus-4-6", source: "upstream_api")
+        model.effortValues = ["low", "medium", "high"]
+        model.configurableReasoning = ModelCatalogSupport.supported.rawValue
+        let reasoning = ReasoningConfiguration()
+        #expect(reasoning.selectedReasoningValue(for: model, kind: .anthropic) == "disabled")
+        #expect(reasoning.pickerReasoningValues(for: model, kind: .anthropic).first == "disabled")
+    }
+
+    @Test func anthropicOverlayDoesNotInventOpusEffortForUnknownModels() {
+        let unknown = CatalogModelChoice(modelName: "claude-sonnet-4-5", source: "upstream_api")
+        let merged = CatalogCapabilityOverlay.merge(kind: .anthropic, model: unknown)
+        #expect(!merged.hasAdjustableReasoning)
+        #expect(merged.effortValues == nil)
+        #expect(merged.thinkingValues == nil)
+    }
+
+    @Test func newChatClampsLeftoverOpusEffortOffSonnet45() async throws {
+        var reasoning = ReasoningConfiguration()
+        reasoning.anthropicThinking = .thinkingAdaptive
+        reasoning.anthropicEffort = "medium"
+        let model = CatalogModelChoice(
+            modelName: "claude-sonnet-4-5",
+            source: "upstream_api",
+            reasoning: ModelCatalogSupport.supported.rawValue,
+            configurableReasoning: ModelCatalogSupport.supported.rawValue,
+            thinkingValues: ["enabled"],
+            tokenBudgetMinimum: 1_024,
+            tokenBudgetMaximum: 4_095
+        )
+        let clamped = reasoning.clamped(to: model, kind: .anthropic)
+        #expect(clamped.anthropicEffort == nil)
+        if case .thinkingBudgetTokens(let tokens) = clamped.anthropicThinking {
+            #expect(tokens == 1_024)
+        } else {
+            Issue.record("expected enabled thinking on Sonnet 4.5")
+        }
     }
 
     @Test @MainActor func readyProfilesIgnoreClosedProviders() throws {

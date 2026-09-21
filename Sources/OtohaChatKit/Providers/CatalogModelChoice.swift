@@ -90,6 +90,22 @@ public struct CatalogModelChoice: Equatable, Sendable, Codable, Identifiable {
             && (!(effortValues ?? []).isEmpty || !(thinkingValues ?? []).isEmpty || tokenBudgetMaximum != nil)
     }
 
+    /// Adaptive thinking is paired with `output_config.effort` on 4.6+ Claude models.
+    public var supportsAnthropicAdaptiveThinking: Bool {
+        thinkingValues?.contains("adaptive") == true || !anthropicEffortWireValues.isEmpty
+    }
+
+    public var supportsAnthropicEnabledThinking: Bool {
+        thinkingValues?.contains("enabled") == true || tokenBudgetMaximum != nil
+    }
+
+    public var anthropicEffortWireValues: [String] {
+        (effortValues ?? []).filter { value in
+            let lowered = value.lowercased()
+            return lowered != "none" && lowered != "off" && lowered != "disabled"
+        }
+    }
+
     public var parameterSummary: String {
         var parts: [String] = []
         if reasoningSupport == .supported { parts.append("Reasoning") }

@@ -45,14 +45,14 @@ public struct CalculatorTool: AgentTool {
 
     public static let name = "calculator"
     public static let description = "Evaluate a restricted arithmetic expression using + - * / ^ and parentheses. No variables or function calls."
-    public static let inputSchema = ToolSchema.object(
+    public static let inputSchema = HostToolSchema.object(
         properties: [
             "expression": .string,
             "formula": .string,
             "input": .string,
             "query": .string,
         ],
-        additionalProperties: true
+        required: ["expression"]
     )
     public static let outputSchema = ToolSchema.object(
         properties: ["expression": .string, "result": .string],

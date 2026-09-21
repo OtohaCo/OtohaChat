@@ -85,6 +85,10 @@ public struct ProviderFactory: Sendable {
         self.pccStatus = pccStatus
     }
 
+    private var executionTransport: any ProviderHTTPTransport {
+        ProviderHTTPErrorTransport(wrapping: transport)
+    }
+
     public func prepare(
         profile: ProviderProfile,
         apiKey: String?,
@@ -169,7 +173,7 @@ public struct ProviderFactory: Sendable {
             maximumOutputTokens: profile.reasoning.maximumOutputTokens,
             reasoningEffort: effort,
             reasoningSummary: summary,
-            transport: transport
+            transport: executionTransport
         )
         let model = ModelID(provider: "openai", name: modelName)
         return PreparedProvider(
@@ -192,15 +196,18 @@ public struct ProviderFactory: Sendable {
         let key = try requiredKey(apiKey, allowsEmpty: false)
         let endpoint = try executionURL(for: profile)
         guard !modelName.isEmpty else { throw ProviderFactoryError.missingModelID }
-        let effort = profile.reasoning.anthropicEffort.map(AnthropicEffort.init(rawValue:))
-        let thinking = anthropicThinking(profile.reasoning.anthropicThinking, effort: effort)
+        let run = AnthropicRunParameters.resolve(
+            reasoning: profile.reasoning,
+            model: profile.catalogModel(named: modelName),
+            maximumOutputTokens: profile.reasoning.maximumOutputTokens
+        )
         let provider = try AnthropicProvider(
             apiKey: key,
             endpoint: endpoint,
             maximumOutputTokens: profile.reasoning.maximumOutputTokens,
-            thinking: thinking,
-            effort: effort,
-            transport: transport
+            thinking: run.thinking,
+            effort: run.effort,
+            transport: executionTransport
         )
         return PreparedProvider(
             profile: profile,
@@ -208,8 +215,8 @@ public struct ProviderFactory: Sendable {
             provider: provider,
             deployment: try deployment(for: profile, endpoint: endpoint),
             configurationSummary: summaryValues(profile, extra: [
-                "thinking": .string(profile.reasoning.anthropicThinking.summaryLabel),
-                "effort": effort.map { .string($0.rawValue) } ?? .null,
+                "thinking": .string(thinkingSummary(run.thinking)),
+                "effort": run.effort.map { .string($0.rawValue) } ?? .null,
             ])
         )
     }
@@ -228,7 +235,7 @@ public struct ProviderFactory: Sendable {
             endpoint: endpoint,
             maximumOutputTokens: profile.reasoning.maximumOutputTokens,
             reasoningEffort: effort,
-            transport: transport
+            transport: executionTransport
         )
         return PreparedProvider(
             profile: profile,
@@ -266,7 +273,7 @@ public struct ProviderFactory: Sendable {
                 maximumOutputTokens: profile.reasoning.maximumOutputTokens,
                 capabilities: capabilities
             ),
-            transport: transport
+            transport: executionTransport
         )
         return PreparedProvider(
             profile: profile,
@@ -418,20 +425,11 @@ public struct ProviderFactory: Sendable {
         }
     }
 
-    private func anthropicThinking(_ choice: ReasoningChoice, effort: AnthropicEffort?) -> AnthropicThinking {
-        switch choice {
-        case .thinkingAdaptive:
-            return .adaptive
-        case .thinkingBudgetTokens(let tokens):
-            return .enabled(budgetTokens: tokens)
-        case .serviceDefault, .disabled, .thinkingDisabled, .effort:
-            if let effort {
-                let value = effort.rawValue.lowercased()
-                if value != "none" && value != "off" && value != "disabled" {
-                    return .adaptive
-                }
-            }
-            return .disabled
+    private func thinkingSummary(_ thinking: AnthropicThinking) -> String {
+        switch thinking {
+        case .disabled: "disabled"
+        case .adaptive: "adaptive"
+        case .enabled(let tokens): "enabled:\(tokens)"
         }
     }
 

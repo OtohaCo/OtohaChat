@@ -152,7 +152,10 @@ public final class ChatStore: ObservableObject {
             title: "New chat",
             profileID: profile.id,
             modelName: modelName,
-            reasoning: profile.reasoning,
+            reasoning: profile.reasoning.clamped(
+                to: profile.catalogModel(named: modelName),
+                kind: profile.kind
+            ),
             snapshot: ConversationSnapshot(conversationID: id),
             availabilityMessage: availabilityNote(for: profile)
         )
@@ -320,7 +323,11 @@ public final class ChatStore: ObservableObject {
         let busy = conversations[index].snapshot.isBusy
         conversations[index].profileID = profileID
         conversations[index].modelName = modelName
-        conversations[index].reasoning = reasoning
+        conversations[index].reasoning = clampedReasoning(
+            reasoning,
+            profileID: profileID,
+            modelName: modelName
+        )
         conversations[index].configurationAppliesNext = busy
         persist(conversationID)
     }
@@ -656,6 +663,17 @@ public final class ChatStore: ObservableObject {
             throw ProviderFactoryError.missingModelID
         }
         return profile
+    }
+
+    private func clampedReasoning(
+        _ reasoning: ReasoningConfiguration,
+        profileID: UUID,
+        modelName: String
+    ) -> ReasoningConfiguration {
+        guard let profile = settings.profiles.first(where: { $0.id == profileID }) else {
+            return reasoning
+        }
+        return reasoning.clamped(to: profile.catalogModel(named: modelName), kind: profile.kind)
     }
 
     private func withRunConfig(_ profile: ProviderProfile, _ conversation: ChatSessionSummary) -> ProviderProfile {
